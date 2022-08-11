@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link href="imgs/favicon.png" rel="bookmark" type="image/x-icon">
+	<link href="imgs/favicon.png" rel="shortcut icon" type="image/x-icon">
+	<title>APP不释手 - Thousand Records</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			letter-spacing: 2px;
+			text-indent: 2px;
+			text-decoration: none;
+			color: #333333;
+		}
+		html, body {
+			width: 100%;
+			height: 100%;
+			background: #ffffff;
+			font-family: "Noto Sans SC";
+		}
+		.skin {
+		    border: 2px solid #ffffff;
+		    border-radius: 20px;
+		    box-sizing: border-box;
+		    box-shadow: 8px 8px 20px 0 rgba(70, 70, 70, .1), -8px -8px 20px 0 #ffffff;
+		    background: linear-gradient(0deg,#ffffff,#f8f8f8);
+		}
+		#container {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			height: auto;
+		}
+		#list {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			width: 100%;
+			max-width: 2010px;
+			padding: 30px;
+			box-sizing: border-box;
+			overflow: hidden;
+
+		}
+		#record {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: row;
+			flex-wrap: wrap;
+			flex-grow: 2;
+			width: 100%;
+			min-width: 330px;
+			height: auto;
+			margin: 30px 30px 0;
+			padding: 30px;
+			overflow: hidden;
+			font-size: 18px;
+			user-select: none;
+		}
+		#miniapp-qrcode {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 300px;
+			min-width: 300px;
+			height: 300px;
+			min-height: 300px;
+			margin: 0 60px 60px 60px;
+			border-radius: 50em;
+			overflow: hidden;
+		}
+		#miniapp-qrcode img {
+			display: block;
+			width: 88%;
+		}
+		#content {
+			max-width: 800px;
+		}
+		#content p {
+			margin-top: 20px;
+			line-height: 30px;
+		}
+		.item {
+			flex-grow: 1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			width: 330px;
+			min-width: 330px;
+			height: 330px;
+			margin: 30px;
+			padding: 30px;
+			overflow: hidden;
+		}
+		.fill {
+			visibility: hidden;
+			height: 0;
+			margin: 0 30px;
+			padding: 0 30px;
+		}
+		.item-logo {
+			display: block;
+			width: 90px;
+			height: 90px;
+			border: none;
+		    border-radius: 16px;
+			user-select: none;
+		}
+		.item-logo-decolor {
+			filter: grayscale(100%);
+		}
+		.item-name {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			margin-top: 20px;
+			overflow: hidden;
+			text-align: center;
+			text-indent: 2px;
+			letter-spacing: 2px;
+			font-size: 16px;
+		}
+		.stop-srv-tag {
+			width: 60px;
+			height: 25px;
+			margin-left: 4px;
+			border-radius: 10px 4px 10px 4px;
+			background-color: rgba(70, 70, 70, .2);
+			line-height: 25px;
+			font-size: 12px;
+			color: #fff;
+			user-select: none;
+		}
+		.recommend {
+			display: -webkit-box;
+			width: fit-content;
+			height: auto;
+			margin: 10px auto 0;
+			overflow: hidden;
+			line-height: 30px;
+			text-align: justify;
+			text-overflow: ellipsis;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+		}
+		.created-time {
+			margin-top: 10px;
+			font-size: 16px;
+			color: #999999;
+			user-select: none;
+		}
+		footer {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			padding-bottom: 30px;
+			font-weight: 700;
+		}
+		#author {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		#wechat-logo {
+			position: relative;
+			width: 25px;
+			margin-right: 4px;
+		}
+		#wechat-logo:hover #wechat-qrcode {
+
+		}
+		#wechat-qrcode {
+			width: 140px;
+			height: 140px;
+			margin-bottom: 20px;
+			overflow: hidden;
+		}
+	</style>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:100,300,400,500,700,900">
+	<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.min.js"></script>
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?13380c57c291094a72234bac51b46f72";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+</head>
+<body>
+	<div id="container">
+		<ul id="list">
+			<div id="record">
+				<div id="miniapp-qrcode" class="skin">
+					<img src="imgs/code.png" />
+				</div>
+				<div id="content">
+					<p>不知不觉，「<strong>APP 不释手</strong>」小程序已经做了 5 年多了。</p>
+					<p>刚好达成记录了 1000 个 APP 体验的里程，特此纪念一下。</p>
+					<p>从诺基亚 S60 V3 时代就很喜欢泡塞班论坛，挖掘新奇软件。</p>
+					<p>这癖好一直持续到现在，从未停止过，一天不挖新 APP，都分泌不出多巴胺来。</p>
+					<p>又刚好会点 HTML 皮毛，所以最后决定还是写个推荐或吐槽 APP 的小程序记录下吧。</p>
+					<p>有些或许因为时间节点，或许因为太秀，或许因为来过又走了，就留在我深深的脑海里。</p>
+					<p>比如 APPSO，第一个推荐的 APP，梦的开始。比如 Early Worm，那是 2020 年疫情最严重时某天凌晨 4 点边玩边写体验双翼齐飞，我至今还记得。比如快知，即刻下架时，最佳的替代者。</p>
+					<p>还有太多比如了，一切尽在不言中。</p>
+					<p>回归到现实，虽然做的  APP  不释手没啥人看，但还是会一直坚持挖掘体验新奇 APP。</p>
+					<p>直到 APP 息微，或者对挖掘失去了兴趣为止吧。</p>
+				</div>
+			</div>
+			<a v-for="item in app" class="skin item" :href="'https://apps.apple.com/cn/app/' + item.appStoreId" target="_blank">
+				<img class="skin item-logo" :class="{'item-logo-decolor': !item.live}" :src="item.appLogo" />
+				<div class="item-name">
+					<h2>{{item.appName}}</h2>
+					<span class="stop-srv-tag" v-if="!item.live">已下架</span>
+				</div>
+				<span class="recommend" :title="item.recommend">{{item.recommend}}</span>
+				<span class="created-time">{{item.createdTime}}</span>
+			</a>
+			<a class="skin item fill"></a>
+			<a class="skin item fill"></a>
+			<a class="skin item fill"></a>
+		</ul>
+	</div>
+	<footer>
+		<img id="wechat-qrcode" class="skin" src="imgs/wechat-code.png"/>
+		<h3 id="author"><img id="wechat-logo" src="imgs/wechat.svg" />BY FLY LEWIS</h3>
+	</footer>
+	<script type="text/javascript" src="data.json"></script>
+	<script type="text/javascript">
+		var data = JSON.parse(JSON.stringify(data)),
+			index = 0,
+			limit = 100,
+			total = 1000,
+			isReqApp = false,
+			renderData = [];
+
+		function reqApp(index) {
+			var reqAppList = [],
+				resAppList = [];
+
+			if(index != total) {
+				//获取请求应用队列
+				for(let i = index; i < index + limit; i++) {
+					renderData.push(data[i]);
+					reqAppList.push(data[i].appStoreId);
+				}
+
+				//请求数据
+				var xhr = new XMLHttpRequest();
+				xhr.open("get", "https://itunes.apple.com/cn/lookup?id=" + reqAppList.toString(), true);
+				xhr.send(null);
+				xhr.onload = function(res) {
+					resAppList = JSON.parse(res.target.responseText);
+						
+					var appLogo;
+
+					//拼接应用图标 && 判断上架状态
+					for(let i = 0; i < limit; i++) {						
+						for(let j = 0; j < resAppList.resultCount; j++) {
+							if(renderData[i + index].appStoreId == resAppList.results[j].trackId) {
+								Vue.set(list.app[i + index], "live", true);
+								break;
+							}
+						}
+					}
+				}
+
+				this.index += limit;
+			}
+		}
+
+		window.onscroll = function() {
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop,
+				scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight,
+				windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+			if(scrollTop + windowHeight >= scrollHeight - 500 && !this.isReqApp && this.index != total) {
+				this.isReqApp = true;
+				reqApp(index);
+				this.isReqApp = false;
+			}
+		}
+
+
+		/* 渲染 */
+		var list = new Vue({
+			el: "#list",
+			data: {
+				app: renderData
+			},
+			created: function() {
+				reqApp(index); //初始化
+			}
+		});
+	</script>
+</body>
+</html>
