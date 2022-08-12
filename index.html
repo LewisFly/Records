@@ -237,6 +237,9 @@
 	</footer>
 	<script type="text/javascript" src="data.json"></script>
 	<script type="text/javascript">
+		
+	</script>
+	<script type="text/javascript">
 		var data = JSON.parse(JSON.stringify(data)),
 			index = 0,
 			limit = 100,
@@ -255,8 +258,23 @@
 					reqAppList.push(data[i].appStoreId);
 				}
 
+				/*var script = document.createElement("script");
+			    script.type = 'text/javascript';
+			    script.src = "https://itunes.apple.com/cn/lookup?callback=getData&id=" + reqAppList.toString();
+
+			    console.log(script.src);
+
+			    document.head.appendChild(script);
+
+				// 回调执行函数
+			    function getData(res) {
+			        console.log(res);
+			    }*/
+
 				var xhr = new XMLHttpRequest();
+				xhr.withCredentials = true;
 				xhr.open("get", "https://itunes.apple.com/cn/lookup?id=" + reqAppList.toString(), true);
+				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 				xhr.send(null);
 				xhr.onload = function(res) {
 					resAppList = JSON.parse(res.target.responseText);
