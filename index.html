@@ -218,10 +218,10 @@
 				</div>
 			</div>
 			<a v-for="item in app" class="skin item" :href="'https://apps.apple.com/cn/app/' + item.appStoreId" target="_blank">
-				<img class="skin item-logo" :class="{'item-logo-decolor': item.live === undefined ? false : !item.live}" :src="item.appLogo" />
+				<img class="skin item-logo" :class="{'item-logo-decolor': item.removed}" :src="item.appLogo" />
 				<div class="item-name">
 					<h2>{{item.appName}}{{item.live}}</h2>
-					<span class="stop-srv-tag" v-if="item.live === undefined ? false : !item.live">已下架</span>
+					<span class="stop-srv-tag" v-if="item.removed">已下架</span>
 				</div>
 				<span class="recommend" :title="item.recommend">{{item.recommend}}</span>
 				<span class="created-time">{{item.createdTime}}</span>
@@ -255,7 +255,6 @@
 					reqAppList.push(data[i].appStoreId);
 				}
 
-				//请求数据
 				var xhr = new XMLHttpRequest();
 				xhr.open("get", "https://itunes.apple.com/cn/lookup?id=" + reqAppList.toString(), true);
 				xhr.send(null);
@@ -265,11 +264,11 @@
 					var appLogo;
 
 					//拼接应用图标 && 判断上架状态
-					for(let i = 0; i < limit; i++) {						
+					for(let i = 0; i < limit; i++) {
+						Vue.set(list.app[i + index], "removed", true);				
 						for(let j = 0; j < resAppList.resultCount; j++) {
 							if(renderData[i + index].appStoreId == resAppList.results[j].trackId) {
-								Vue.set(list.app[i + index], "live", true);
-								break;
+								Vue.set(list.app[i + index], "removed", false);
 							}
 						}
 					}
