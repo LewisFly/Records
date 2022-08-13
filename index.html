@@ -54,7 +54,7 @@
 			flex-wrap: wrap;
 			flex-grow: 2;
 			width: 100%;
-			min-width: 260px;
+			min-width: 330px;
 			height: auto;
 			margin: 30px 30px 0;
 			padding: 30px;
@@ -96,7 +96,7 @@
 			justify-content: center;
 			flex-direction: column;
 			width: 330px;
-			min-width: 260px;
+			min-width: 330px;
 			height: 330px;
 			margin: 30px;
 			padding: 30px;
@@ -208,7 +208,7 @@
 				<div id="miniapp-qrcode" class="skin">
 					<img src="imgs/code.png" />
 				</div>
-				<div id="content">
+				<div id="content" v-if="indirect">
 					<p>不知不觉，「<strong>APP 不释手</strong>」小程序已经做了 5 年多了。</p>
 					<p>刚好达成记录了 1000 个 APP 体验的里程，特此纪念一下。</p>
 					<p>从诺基亚 S60 V3 时代就很喜欢泡塞班论坛，挖掘新奇软件。</p>
@@ -302,7 +302,8 @@
 		var list = new Vue({
 			el: "#list",
 			data: {
-				app: renderData
+				app: renderData,
+				indirect: location.href.indexOf("indirect") != -1 ? true : false 
 			},
 			created: function() {
 				reqApp(index); //初始化
