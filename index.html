@@ -303,7 +303,7 @@
 			el: "#list",
 			data: {
 				app: renderData,
-				indirect: location.href.indexOf("indirect") != -1 ? true : false 
+				indirect: location.href.indexOf("indirect") == -1 ? true : false 
 			},
 			created: function() {
 				reqApp(index); //初始化
